@@ -21,6 +21,8 @@ Next, run npm start, and fire up a node server on the root directory.
 
 For authentication to work, you must have a .env file in the root of the project with the following information from a Auth0 client, and a postgres (easiest: heroku) database.
 
+Remove brackets! :)
+
 ```
 SECRET={ANY STRING YOU WANT}
 

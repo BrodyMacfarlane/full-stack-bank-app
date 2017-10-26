@@ -54,14 +54,14 @@ passport.serializeUser((id, done) => {
     done(null, id)
 })
 passport.deserializeUser((id, done) => {
-    app.get('db').find_session_user().then(user => {
+    app.get('db').find_session_user(id).then(user => {
         done(null, user[0])
     })
 })
 
 app.get('/auth', passport.authenticate('auth0'))
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/',
+    successRedirect: 'http://localhost:3000/#/private',
     failureRedirect: '/auth'
 }))
 app.get('/auth/me', (req, res) => {
@@ -71,6 +71,10 @@ app.get('/auth/me', (req, res) => {
     else {
         return res.status(401).send("Need to log in.")
     }
+})
+app.get('/auth/logout', (req, res) => {
+    req.logOut();
+    res.redirect(308, 'http://localhost:3000/')
 })
 
 
