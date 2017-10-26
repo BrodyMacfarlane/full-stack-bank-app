@@ -6,7 +6,9 @@ First off, I'd just like to thank you for checking out my project.  If you have 
 ## STEP ONE
 
 Make sure you have node and npm installed, clone the repo, change directory into /FULL-STACK-APP and run
+
 `npm install`
+
 in your terminal/command-line.
 
 
@@ -20,10 +22,15 @@ Next, run npm start, and fire up a node server on the root directory.
 For authentication to work, you must have a .env file in the root of the project with the following information from a Auth0 client, and a postgres (easiest: heroku) database.
 
 `SECRET={ANY STRING YOU WANT}
+
 AUTH_DOMAIN={YOUR AUTH0 DOMAIN}
+
 AUTH_CLIENTID={YOU AUTH0 CLIENT ID}
+
 AUTH_CLIENTSECRET={YOUR AUTH0 CLIENT SECRET}
+
 AUTH_CALLBACK=http://localhost:3535/auth/callback
+
 CONNECTION_STRING={YOUR POSTGRES DATABASE CONNECTION STRING}`
 
 
