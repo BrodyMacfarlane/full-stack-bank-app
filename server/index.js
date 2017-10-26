@@ -1,7 +1,11 @@
+require('dotenv').config()
+
 const express = require('express')
      ,bodyParser = require('body-parser')
      ,cors = require('cors')
-// require('dotenv')
+     ,session = require('express-session')
+     ,passport = require('passport')
+     ,Auth0Strategy = require('passport-auth0')
 
 const app = express();
 app.use(bodyParser.json())
