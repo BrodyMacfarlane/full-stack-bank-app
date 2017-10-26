@@ -50,11 +50,13 @@ passport.use(new Auth0Strategy({
         }
     })
 }))
-passport.serializeUser((profile, done) => {
-    done(null, profile)
+passport.serializeUser((id, done) => {
+    done(null, id)
 })
-passport.deserializeUser((profile, done) => {
-    done(null, profile)
+passport.deserializeUser((id, done) => {
+    app.get('db').find_session_user().then(user => {
+        done(null, user[0])
+    })
 })
 
 app.get('/auth', passport.authenticate('auth0'))
@@ -62,6 +64,14 @@ app.get('/auth/callback', passport.authenticate('auth0', {
     successRedirect: 'http://localhost:3000/',
     failureRedirect: '/auth'
 }))
+app.get('/auth/me', (req, res) => {
+    if(req.user){
+        return res.status(200).send(req.user)
+    }
+    else {
+        return res.status(401).send("Need to log in.")
+    }
+})
 
 
 const PORT = 3535;
