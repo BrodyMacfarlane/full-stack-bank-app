@@ -6,7 +6,7 @@ class App extends Component {
     return (
       <div className="App">
         <a href="http://localhost:3535/auth">
-          <button type='' className=''>Login</button>
+          <button type='' className=''>Log in</button>
         </a>
       </div>
     );
